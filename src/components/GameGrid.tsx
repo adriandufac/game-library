@@ -3,15 +3,13 @@ import useGames from "../hooks/useGames";
 import GameCard from "./GameCard";
 import GameCardSkeleton from "./GameCardSkeleton";
 import GameCardContainer from "./GameCardContainer";
-import { Genre } from "../hooks/useGenres";
-import { Platform } from "../hooks/usePlatforms";
+import { GameQuery } from "../App";
 
 interface GameGridProps {
-  GenreDisplayed : Genre | null
-  PlateformDisplayed : Platform | null
+  gameQuery : GameQuery;
 }
-const GameGrid = ({GenreDisplayed, PlateformDisplayed}:GameGridProps) => {
-  const { datas, error, isLoading } = useGames(GenreDisplayed,PlateformDisplayed);
+const GameGrid = ({gameQuery}:GameGridProps) => {
+  const { datas, error, isLoading } = useGames(gameQuery);
   const skeletonArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13];
   return (
     <>
@@ -28,7 +26,6 @@ const GameGrid = ({GenreDisplayed, PlateformDisplayed}:GameGridProps) => {
             </GameCardContainer>
           ))}
         {datas.map((game) => (
-          /* game.genres.filter(g=>g.id === genreDisplayedID) */
           <GameCardContainer key={game.id}>
             <GameCard  game={game} />
           </GameCardContainer>
