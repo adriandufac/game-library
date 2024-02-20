@@ -12,6 +12,7 @@ export interface GameQuery {
   genre : Genre | null;
   platform : Platform | null;
   sort : string
+  search: string
 }
 
 function App() {
@@ -30,7 +31,7 @@ function App() {
       }}
     >
       <GridItem area={"nav"}>
-        <NavBar></NavBar>
+        <NavBar HandleSubmit2={(search)=>setGameQuery({...gameQuery,search})}></NavBar>
       </GridItem>
       <Show above="lg">
         <GridItem area={"aside"} paddingX={5}><GenreList selectedGenre={gameQuery.genre} handleClick={(genre) => setGameQuery({...gameQuery,genre})}></GenreList></GridItem>
