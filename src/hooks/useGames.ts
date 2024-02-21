@@ -15,6 +15,7 @@ export interface Game {
   parent_platforms: { platform: Platform }[]; // designed comme ca par l'api
   metacritic: number;
   genres: { genre: Genre }[];
+  rating_top: number;
 }
 
 const useGames = (gameQuery: GameQuery) =>
